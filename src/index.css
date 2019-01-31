@@ -16,11 +16,7 @@ code {
 .list-group-item{
   display: table !important;
   width: 100% !important;
-}
-
-.list-group-item div{
-  float: left !important;
-  
+  max-height: 150px;
 }
 
 .categoryName{
@@ -45,4 +41,10 @@ legend{
   width: auto !important;
   border: none !important;
   padding: 5px !important;
+}
+
+#product-image img{
+  height: auto;
+  max-height: 150px;
+  width: auto;
 }

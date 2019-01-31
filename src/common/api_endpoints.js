@@ -1,7 +1,10 @@
 
 export const ADD_PRODUCT = "http://miron.gearhostpreview.com/api/values/AddProduct";
-export function GET_PRODUCT(category) {
-    return "http://miron.gearhostpreview.com/api/values/GetProducts?category="+category;
+export function GET_PRODUCT(category='') {
+    if(category === ''){
+        return "http://miron.gearhostpreview.com/api/values/GetProducts";
+    }
+    return "http://miron.gearhostpreview.com/api/values/GetProducts?category="+category;    
 }
 
 export const ADD_CATEGORY = "http://miron.gearhostpreview.com/api/values/addcategory";

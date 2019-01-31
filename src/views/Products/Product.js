@@ -15,56 +15,19 @@ class Product extends Component {
         }
     }
     getProduct(){
-        /*let apiPath = "http://miron.gearhostpreview.com/api/values/GetProducts?category="+this.state.category;
-        superagent
-            .get(apiPath)
-            .end((err, res) => {
-                if(err) {
-                    this.setState({errorMessage: "Client: Unable to retrive product."});
-                    this.setState({successMessage: null});
-                    console.log("Client: Unable to retrive product.");
-                    return;
-                }
-                if(res.body){
-                    this.setState({successMessage: "Retrive product(s) successfully."});
-                    this.setState({errorMessage: null});
-                    let products=[];
-                    res.body.forEach(element => {
-                            products.push(JSON.parse(element));
-                        //window.element=element;
-                        
-                    });
-                    this.setState({products: products});
-                    window.products=this.state.products;
-                    console.log("Retrive product(s) successfully.");
-                }
-                else{
-                    this.setState({errorMessage: "Server: Something went wrong."});
-                    this.setState({successMessage: null});
-                    console.log("Server: Something went wrong.");
-                }
-                window.res=res;
-            })*/
-
-        axios.post(GET_PRODUCT('home'))
+        axios.get(GET_PRODUCT())
         .then(res => {
             console.log("Successfully.");
             console.log(res);
             this.setState({products: res.data});
             window.products=this.state.products;
-            //this.setState({errorSuccessMessage: 'Retrive product(s) successfully.'});
-            //this.setState({errorSuccessMessageDivClass: 'alert alert-success show'});
-            //this.resetForm();
         })
         .catch((error) => {
             console.log("Server: Something went wrong!");
             console.log(error);
-            //this.setState({errorSuccessMessage: 'Server: Something went wrong.'});
-            //this.setState({errorSuccessMessageDivClass: 'alert alert-danger show'});
         });
     }
     componentDidMount(){
-        console.log("DFD");
         this.getProduct();
     }
     render(){
@@ -81,19 +44,24 @@ class Product extends Component {
 }
 class ListItems extends Component {
     render(){
-        //let img_path = images('http://miron.gearhostpreview.com/uploads/'+this.props.data.Images);
-        let img_path = 'http://miron.gearhostpreview.com/uploads/'+this.props.data.Images;
+        let images = this.props.data.Images.split(',');
+        let img_path = 'http://miron.gearhostpreview.com/uploads/'+images[0];
         return(
             <a href='/'>
             <li className="list-group-item">
             
-                <div><img className='img-responsive' src={img_path} alt={this.props.data.Images} width='100'/></div>
-                <div>
-                    <h4>{this.props.data.ProductTitle}</h4>
-                    <div>{this.props.data.Quantity>0?'Availability: Yes':'Not Available'}</div>
+                <div className='col-sm-3' id='product-image'>
+                    <img className='img-responsive' src={img_path} alt={images[0]} width='100'/>
                 </div>
-                <div style={{float: 'right'}}>
-                    <h1>&#36;{this.props.data.Price}</h1>
+                <div className='col-sm-7'>
+                    <h4>{this.props.data.ProductTitle}</h4>
+                    <h5>{this.props.data.Quantity>0?(this.props.data.Quantity+' Available'):'Stock out'}</h5>
+                    <h5>{this.props.data.Sizes.length>0?('Availabel Sizes: '+this.props.data.Sizes):''}</h5>
+                    <h5>{this.props.data.Colors.length>0?('Availabel Colors: '+this.props.data.Colors):''}</h5>
+                    <p>{this.props.data.Shortbio}</p>
+                </div>
+                <div className='col-sm-2'>
+                    <h1 style={{float: 'right'}}>&#36;{this.props.data.Price}</h1>
                 </div>
             </li></a>
         )
