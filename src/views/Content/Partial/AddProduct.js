@@ -61,6 +61,9 @@ class AddProduct extends Component {
 
     // Handling the user input followed by the form validation.
     handleInput = e => {
+        
+        this.setState({errorSuccessMessage: ''});
+        this.setState({errorSuccessMessageDivClass: 'hide'});
         const fieldName = e.target.name;
         const fieldValue = e.target.value;
         if(e.target.type !== 'file'){
@@ -68,9 +71,16 @@ class AddProduct extends Component {
                             () => { this.validateField(fieldName, fieldValue)});
         }
         else{
-            this.setState({selectedFeaturedImageFile: e.target.files},
-                            () => { this.validateField(fieldName, fieldValue)});
-            console.log(e.target.files);
+            if(e.target.name === 'selectedFeaturedImageFile'){
+
+                this.setState({selectedFeaturedImageFile: e.target.files},
+                    () => { this.validateField(fieldName, fieldValue)});
+            }
+            else if(e.target.name === 'selectedAddiionalImageFiles'){
+
+                this.setState({selectedAddiionalImageFiles: e.target.files},
+                    () => { this.validateField(fieldName, fieldValue)});
+            }
         }
     }
     
@@ -183,7 +193,7 @@ class AddProduct extends Component {
             allFiles = [...this.state.selectedFeaturedImageFile];
         }
         if(this.state.selectedAddiionalImageFiles !== null && this.state.selectedAddiionalImageFiles.length){
-            allFiles = [...this.state.selectedAddiionalImageFiles];
+            allFiles.push(...this.state.selectedAddiionalImageFiles);
         }
         console.log(allFiles);
 
@@ -256,12 +266,6 @@ class AddProduct extends Component {
                                     <label className="control-label col-sm-2" htmlFor="category">Category: </label>
                                     <div className="col-sm-9">
                                         <Dropdown name='category' endpoint={GET_CATEGORIES} calsses={`form-control ${this.errorClass(this.state.formErrors.category)}`} category={this.state.category} handleInput={this.handleInput}/>
-                                        {/*<select name='category' className={`form-control ${this.errorClass(this.state.formErrors.category)}`} value={this.state.category} onChange={this.handleInput}>
-                                            <option value=''>Choose...</option>
-                                            <option defaultValue="1">Home</option>
-                                            <option defaultValue="2">Electronics</option>
-                                            <option defaultValue="3">Baby</option>
-        </select>*/}
                                     </div>
                                     <span className="glyphicon glyphicon-star-empty col-sm-1"></span>
                                 </div>
@@ -270,13 +274,7 @@ class AddProduct extends Component {
                                 <div className="form-group">
                                     <label className="control-label col-sm-2" htmlFor="tag">Tag: </label>
                                     <div className="col-sm-9">
-                                    <Dropdown name='tag' endpoint={GET_TAGS} calsses='form-control' category={this.state.tag} handleInput={this.handleInput}/>
-                                        {/*<select name='tag' className='form-control' value={this.state.tag} onChange={this.handleInput}>
-                                            <option value=''>Choose...</option>
-                                            <option defaultValue="1">Tag1</option>
-                                            <option defaultValue="2">Tag2</option>
-                                            <option defaultValue="3">Tag3</option>
-    </select>*/}
+                                        <Dropdown name='tag' endpoint={GET_TAGS} calsses='form-control' category={this.state.tag} handleInput={this.handleInput}/>
                                     </div>
                                 </div>
 
