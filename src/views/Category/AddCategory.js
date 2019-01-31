@@ -19,10 +19,10 @@ class AddCategory extends Component{
 
     handleCategoryOrSubcategoryInput(e){
         this.setState({CategoryOrSubcategory: e.target.value});
-        console.log(this.props.categoryOrSubcategoryArr)
-        console.log("Miron "+this.props.categoryOrSubcategory)
+        //console.log("Miron "+this.props.categoryOrSubcategory)
         let catOrSubcat = this.props.categoryOrSubcategory.toLowerCase() === 'category'?'category':'subcategory';
-        if(this.props.categoryOrSubcategoryArr.find(x => (x[catOrSubcat]) === e.target.value.toLowerCase())){
+
+        if(this.props.categoryOrSubcategoryArr.find(x => (x[catOrSubcat].toLowerCase()) === e.target.value.toLowerCase())){
             console.log("Duplicate!!!");
             //this.props.setAlertMessageFunc('Category already exist.','alert alert-warning show');
             this.setState({errorSuccessMessage: this.props.categoryOrSubcategory+' already exist.'});
