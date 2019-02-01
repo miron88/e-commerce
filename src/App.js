@@ -16,18 +16,21 @@ class App extends Component {
   render() {
     const USER = localStorage.getItem('user');
     return (
-      <div className="col-sm-12">
+      <div>
         <Header/>
         {USER?<ContentHeader/>:("")}
-        
-        <Router basename='/'>
-          <Switch>
-            <Route exact path='/' component={Login}/>
-            <Route path="/content" component={Content}/>
-            <Route path="/Product" component={Product}/>
-            <Route path="/Category" component={Category}/>
-          </Switch>
-        </Router>
+        <div className='container'>
+          <div className='col-sm-12'>
+            <Router basename='/'>
+              <Switch>
+                <Route exact path='/' component={Login}/>
+                <Route path="/content" component={Content}/>
+                <Route path="/Product" component={Product}/>
+                <Route path="/Category" component={Category}/>
+              </Switch>
+            </Router>
+          </div>
+        </div>
         <Footer/>
       </div>
     );

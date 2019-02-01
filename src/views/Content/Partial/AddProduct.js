@@ -242,99 +242,75 @@ class AddProduct extends Component {
                     <CustomMessage errorSuccessMessageDivClass={this.state.errorSuccessMessageDivClass} errorSuccessMessage={this.state.errorSuccessMessage}/>  
                     <fieldset>
                         <legend>Add Product</legend>
-                        <form className='form-horizontal'>
+                        <form className='form-inline'>
                             {/*Product Title*/}
-                            <div className="form-group">
-                                <label className="control-label col-sm-2" htmlFor="productTitle">Product Title: </label>
-                                <div className="col-sm-9">
-                                    <input name='productTitle' type="text" value={this.state.productTitle} onChange={this.handleInput} className={`form-control ${this.errorClass(this.state.formErrors.productTitle)}`} placeholder="Enter Product Title"/>
-                                </div>
-                                <span className="glyphicon glyphicon-star-empty col-sm-1"></span>
+                            <div className="form-group col-sm-12">
+                                <div className="control-label col-sm-2" htmlFor="productTitle">Product Title:<span className='glyphicon'>*</span> </div>
+                                <input name='productTitle' type="text" value={this.state.productTitle} onChange={this.handleInput} className={`form-control col-sm-10 ${this.errorClass(this.state.formErrors.productTitle)}`} placeholder="Enter Product Title"/>
                             </div>
                             
                             {/*Product Code*/}
-                            <div className="form-group">
-                                <label className="control-label col-sm-2" htmlFor="productCode">Product Code: </label>
-                                <div className="col-sm-9">
-                                    <input name='productCode' type="text" value={this.state.productCode} onChange={this.handleInput} className='form-control' placeholder="Enter Product Code"/>
-                                </div>
+                            <div className="form-group col-sm-12">
+                                <div className="control-label col-sm-2" htmlFor="productCode">Product Code: </div>
+                                <input name='productCode' type="text" value={this.state.productCode} onChange={this.handleInput} className='form-control col-sm-10' placeholder="Enter Product Code"/>
                             </div>
                             
                             {/*Category*/}
-                            <div className="form-group">
-                                <label className="control-label col-sm-2" htmlFor="category">Category: </label>
-                                <div className="col-sm-9">
-                                    <Dropdown name='category' endpoint={GET_CATEGORIES} calsses={`form-control ${this.errorClass(this.state.formErrors.category)}`} category={this.state.category} handleInput={this.handleInput}/>
-                                </div>
-                                <span className="glyphicon glyphicon-star-empty col-sm-1"></span>
+                            <div className="form-group col-sm-12">
+                                <div className="control-label col-sm-2" htmlFor="category">Category:<span className='glyphicon'>*</span> </div>
+                                <Dropdown name='category' endpoint={GET_CATEGORIES} calsses={`form-control col-sm-10 ${this.errorClass(this.state.formErrors.category)}`} category={this.state.category} handleInput={this.handleInput}/>
                             </div>
                             
                             {/*Tag*/}
-                            <div className="form-group">
-                                <label className="control-label col-sm-2" htmlFor="tag">Tag: </label>
-                                <div className="col-sm-9">
-                                    <Dropdown name='tag' endpoint={GET_TAGS} calsses='form-control' category={this.state.tag} handleInput={this.handleInput}/>
-                                </div>
+                            <div className="form-group col-sm-12">
+                                <div className="control-label col-sm-2" htmlFor="tag">Tag: </div>
+                                <Dropdown name='tag' endpoint={GET_TAGS} calsses='form-control col-sm-10' category={this.state.tag} handleInput={this.handleInput}/>
                             </div>
 
                             {/*Price/each*/}
-                            <div className="form-group">
-                                <label className="control-label col-sm-2" htmlFor="price">Price/each: </label>
-                                <div className="col-sm-9">
-                                    <input name='price' type="number" value={this.state.price} onChange={this.handleInput} className={`form-control ${this.errorClass(this.state.formErrors.price)}`} placeholder="Enter Price"/>
-                                </div>
-                                <span className="glyphicon glyphicon-star-empty col-sm-1"></span>
+                            <div className="form-group col-sm-12">
+                                <div className="control-label col-sm-2" htmlFor="price">Price/each:<span className='glyphicon'>*</span> </div>
+                                <input name='price' type="number" value={this.state.price} onChange={this.handleInput} className={`form-control col-sm-10 ${this.errorClass(this.state.formErrors.price)}`} placeholder="Enter Price"/>
                             </div>
 
                             {/*Quantity*/}
-                            <div className="form-group">
-                                <label className="control-label col-sm-2" htmlFor="quantity">Quantity: </label>
-                                <div className="col-sm-9">
-                                    <input name='quantity' type="number" value={this.state.quantity} onChange={this.handleInput} className={`form-control ${this.errorClass(this.state.formErrors.quantity)}`} placeholder="Enter Quantity"/>
-                                </div>
-                                <span className="glyphicon glyphicon-star-empty col-sm-1"></span>
+                            <div className="form-group col-sm-12">
+                                <div className="control-label col-sm-2" htmlFor="quantity">Quantity:<span className='glyphicon'>*</span> </div>
+                                <input name='quantity' type="number" value={this.state.quantity} onChange={this.handleInput} className={`form-control col-sm-10 ${this.errorClass(this.state.formErrors.quantity)}`} placeholder="Enter Quantity"/>
                             </div>
 
                             {/*Sizes*/}
-                            <div className="form-group">
-                                <label className="control-label col-sm-2" htmlFor="sizes">Sizes: </label>
-                                <div className="col-sm-9">
-                                    <input name='sizes' type="text" value={this.state.sizes} onChange={this.handleInput} className='form-control' placeholder="Enter Sizes"/>
-                                </div>
+                            <div className="form-group col-sm-12">
+                                <div className="control-label col-sm-2" htmlFor="sizes">Sizes: </div>
+                                <input name='sizes' type="text" value={this.state.sizes} onChange={this.handleInput} className='form-control col-sm-10' placeholder="Enter Sizes"/>
                                 <label className="control-label col-sm-2" htmlFor="sizes"></label>
                                 <div className="col-sm-9">Hints: S, M, L</div>
                             </div>
                             
                             {/*Colors*/}
-                            <div className="form-group">
-                                <label className="control-label col-sm-2" htmlFor="colors">Colors: </label>
-                                <div className="col-sm-9">
-                                    <input name='colors' type="text" value={this.state.colors} onChange={this.handleInput} className='form-control' placeholder="Enter Colors"/>
-                                </div>
-                                <label className="control-label col-sm-2" htmlFor="sizes"></label>
+                            <div className="form-group col-sm-12">
+                                <div className="control-label col-sm-2" htmlFor="colors">Colors: </div>
+                                <input name='colors' type="text" value={this.state.colors} onChange={this.handleInput} className='form-control col-sm-10' placeholder="Enter Colors"/>
+                                <div className="control-label col-sm-2" htmlFor="sizes"></div>
                                 <div className="col-sm-9">Hints: Blue, White, Black</div>
                             </div>
                             
                             {/*Short Bio*/}
-                            <div className="form-group">
-                                <label className="control-label col-sm-2" htmlFor="shortbio">Short Bio: </label>
-                                <div className="col-sm-9">
-                                    <input name='shortbio' type="text" value={this.state.shortbio} onChange={this.handleInput} className='form-control' placeholder="Enter Short Bio"/>
-                                </div>
+                            <div className="form-group col-sm-12">
+                                <div className="control-label col-sm-2" htmlFor="shortbio">Short Bio: </div>
+                                <input name='shortbio' type="text" value={this.state.shortbio} onChange={this.handleInput} className='form-control col-sm-10' placeholder="Enter Short Bio"/>
                             </div>
 
                             {/*Description*/}
-                            <div className="form-group">
-                                <label className="control-label col-sm-2" htmlFor="description">Description: </label>
-                                <div className="col-sm-9">
-                                    <textarea name='description' className='form-control' value={this.state.description} onChange={this.handleInput} rows="5"></textarea>
-                                </div>
+                            <div className="form-group col-sm-12">
+                                <div className="control-label col-sm-2" htmlFor="description">Description: </div>
+                                <textarea name='description' className='form-control col-sm-10' value={this.state.description} onChange={this.handleInput} rows="5"></textarea>
                             </div>
 
                             {/*Upload Featured Image*/}
-                            <div className="form-group">
-                                <label className="control-label col-sm-2" htmlFor="upload_image">Featured Image: </label>
-                                <div className="col-sm-9">
+                            <div className="form-group col-sm-12">
+                                <div className="control-label col-sm-2" htmlFor="upload_image">Featured Image:<span className='glyphicon'>*</span> </div>
+                                <div className="col-sm-10">
                                     <span className="input-group-btn">
                                         <span className={`btn btn-default btn-file ${this.errorClass(this.state.formErrors.selectedFeaturedImageFile)}`}>
                                             <input onChange={this.handleInput} type="file" name="selectedFeaturedImageFile"/>
@@ -345,9 +321,9 @@ class AddProduct extends Component {
                             </div>
 
                             {/*Upload Additional Images*/}
-                            <div className="form-group">
-                                <label className="control-label col-sm-2" htmlFor="upload_image">Additional Image(s): </label>
-                                <div className="col-sm-2">
+                            <div className="form-group col-sm-12">
+                                <div className="control-label col-sm-2" htmlFor="upload_image">Additional Image(s): </div>
+                                <div className="col-sm-10">
                                     <span className="input-group-btn">
                                         <span className="btn btn-default btn-file">
                                             <input onChange={this.handleInput} type="file" name="selectedAddiionalImageFiles" multiple/>
@@ -357,9 +333,9 @@ class AddProduct extends Component {
                             </div>                                
                             
                             <div className="form-group">
-                                <label className="control-label col-sm-2"></label>
+                                <label className="control-label col-sm-3"></label>
                                 <div className="col-sm-9">
-                                    <button className="btn btn-primary" disabled={!this.state.formValid} onClick={this.addProduct}>ADD</button>
+                                    <button className="btn btn-secondary" disabled={!this.state.formValid} onClick={this.addProduct}>ADD</button>
                                 </div>
                             </div>
                         </form>   

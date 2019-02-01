@@ -47,23 +47,23 @@ class ListItems extends Component {
         let images = this.props.data.Images.split(',');
         let img_path = 'http://miron.gearhostpreview.com/uploads/'+images[0];
         return(
-            <a href='/'>
             <li className="list-group-item">
-            
-                <div className='col-sm-3' id='product-image'>
-                    <img className='img-responsive' src={img_path} alt={images[0]} width='100'/>
+                <div className='form-inline'>
+                    <div className='col-sm-3' id='product-image'>
+                        <img className='img-responsive' src={img_path} alt={images[0]} width='100'/>
+                    </div>
+                    <div className='col-sm-7'>
+                        <h4>{this.props.data.ProductTitle}</h4>
+                        <h5>{this.props.data.Quantity>0?(this.props.data.Quantity+' Available'):'Stock out'}</h5>
+                        <h5>{this.props.data.Sizes.length>0?('Availabel Sizes: '+this.props.data.Sizes):''}</h5>
+                        <h5>{this.props.data.Colors.length>0?('Availabel Colors: '+this.props.data.Colors):''}</h5>
+                        <p>{this.props.data.Shortbio}</p>
+                    </div>
+                    <div className='col-sm-2'>
+                        <h1 style={{float: 'right'}}>&#36;{this.props.data.Price}</h1>
+                    </div>
                 </div>
-                <div className='col-sm-7'>
-                    <h4>{this.props.data.ProductTitle}</h4>
-                    <h5>{this.props.data.Quantity>0?(this.props.data.Quantity+' Available'):'Stock out'}</h5>
-                    <h5>{this.props.data.Sizes.length>0?('Availabel Sizes: '+this.props.data.Sizes):''}</h5>
-                    <h5>{this.props.data.Colors.length>0?('Availabel Colors: '+this.props.data.Colors):''}</h5>
-                    <p>{this.props.data.Shortbio}</p>
-                </div>
-                <div className='col-sm-2'>
-                    <h1 style={{float: 'right'}}>&#36;{this.props.data.Price}</h1>
-                </div>
-            </li></a>
+            </li>
         )
     }
 }

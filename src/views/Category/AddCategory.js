@@ -19,19 +19,16 @@ class AddCategory extends Component{
 
     handleCategoryOrSubcategoryInput(e){
         this.setState({CategoryOrSubcategory: e.target.value});
-        //console.log("Miron "+this.props.categoryOrSubcategory)
         let catOrSubcat = this.props.categoryOrSubcategory.toLowerCase() === 'category'?'category':'subcategory';
 
         if(this.props.categoryOrSubcategoryArr.find(x => (x[catOrSubcat].toLowerCase()) === e.target.value.toLowerCase())){
             console.log("Duplicate!!!");
-            //this.props.setAlertMessageFunc('Category already exist.','alert alert-warning show');
             this.setState({errorSuccessMessage: this.props.categoryOrSubcategory+' already exist.'});
             this.setState({errorSuccessMessageDivClass: 'alert alert-warning show'});
         }
         else{
-            //this.props.setAlertMessageFunc('','alert alert-warning hide');
             this.setState({errorSuccessMessage: ''});
-            this.setState({errorSuccessMessageDivClass: 'alert alert-warning hide'});
+            this.setState({errorSuccessMessageDivClass: 'hide'});
         }
         //console.log(this.props.categoryOrSubcategoryArr.find(x => (x.category) = e.target.value));
     }
@@ -74,24 +71,19 @@ class AddCategory extends Component{
                     }}/>:("")
                 }
                 { /* Form validation or ERROR message. */}
-                <CustomMessage errorSuccessMessageDivClass={this.state.errorSuccessMessageDivClass} errorSuccessMessage={this.state.errorSuccessMessage}/>
-
-                <div className="panel panel-default">
-                    <div className="panel-heading">Add New {this.props.categoryOrSubcategory}</div>
-                    <div className="panel-body col">
-                        <form className="form-horizontal col-sm-12">
-                            <div className="form-group">
-                                <label className="col-sm-3 control-label">{this.props.categoryOrSubcategory} Name</label>
-                                <div className="col-sm-7">
-                                    <input onChange={this.handleCategoryOrSubcategoryInput} value={this.state.CategoryOrSubcategory} className="form-control" id="focusedInput" type="text" placeholder={`${this.props.categoryOrSubcategory} name`}/>
-                                </div>
+                <fieldset>
+                    <legend>Add New {this.props.categoryOrSubcategory}</legend>
+                    <CustomMessage errorSuccessMessageDivClass={this.state.errorSuccessMessageDivClass} errorSuccessMessage={this.state.errorSuccessMessage}/>
+                        <form className="form-inline">
+                            <div className="form-group col-sm-12">
+                                <div className="col-sm-2 control-label">{this.props.categoryOrSubcategory} Name:</div>
+                                <input className="form-control col-sm-8" onChange={this.handleCategoryOrSubcategoryInput} value={this.state.CategoryOrSubcategory} id="focusedInput" type="text" placeholder={`${this.props.categoryOrSubcategory} name`}/>
                                 <div className='col-sm-2'>
-                                    <button type="button" className="btn btn-primary" onClick={this.handleAddCategoriesOrSubcategories}>Add</button>
+                                    <button type="button" className="btn btn-secondary" onClick={this.handleAddCategoriesOrSubcategories}>Add</button>
                                 </div>
                             </div>
                         </form>
-                    </div>
-                </div>
+                </fieldset>
             </div>
         )
     }

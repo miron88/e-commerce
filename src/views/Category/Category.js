@@ -43,13 +43,18 @@ class Category extends Component{
     render(){
         return(
             <div>
-                <div className="panel panel-default panel-heading">
-                    <label className="radio-inline">
-                        <input type="radio" name="optradio" defaultChecked value='Category' onClick={this.handleCatSubCatSelector} />Category
-                    </label>
-                    <label className="radio-inline">
-                        <input type="radio" name="optradio" value='Tag' onClick={this.handleCatSubCatSelector} />Tags
-                    </label>
+                <div className="card ">
+                    <div className="card-body">
+                        <h4 className="card-title">Select to switch</h4>
+                        <div className="form-check-inline">
+                            <label className="form-check-label">
+                                <input className='form-check-input' type="radio" name="optradio" defaultChecked value='Category' onClick={this.handleCatSubCatSelector} />Category
+                            </label>
+                            <label className="form-check-label">
+                                <input className='form-check-input' type="radio" name="optradio" value='Tag' onClick={this.handleCatSubCatSelector} />Tags
+                            </label>
+                        </div>
+                    </div>
                 </div>
 
                 <AddCategory getCategoriesOrSubcategoriesFunc={this.getCategoriesOrSubcategoriesFunc} categoryOrSubcategoryArr={this.state.categoryOrSubcategoryArr} categoryOrSubcategory={this.state.categoryOrSubcategory} />

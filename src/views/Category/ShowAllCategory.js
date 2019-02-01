@@ -55,13 +55,12 @@ class ShowAllCategory extends Component{
     }
     render(){
         return(
-            <div>
+            <div className='card'>
                 <CustomMessage errorSuccessMessage={this.state.errorSuccessMessage} errorSuccessMessageDivClass={this.state.errorSuccessMessageDivClass}/>
-                <div className="panel panel-default">
-                    <div className="panel-heading">All {this.props.categoryOrSubcategory}</div>
+                    <div className="card-header">All {this.props.categoryOrSubcategory}</div>
+                    
                     {this.props.categoryOrSubcategoryArr.length > 0? this.props.categoryOrSubcategoryArr.map((data, i) => 
                     <CategoryList key={i} data={data} handleCategoryDelete={this.handleCategoryDelete} handleCategoryEdit={this.handleCategoryEdit} catOrSubcat={this.props.categoryOrSubcategory}/>):<div className='alert'>No {this.props.categoryOrSubcategory} Available.</div>}
-                </div>
             </div>
         )
     }
@@ -70,13 +69,13 @@ class CategoryList extends Component{
     render(){
         let temp = this.props.catOrSubcat === 'Category'? 'category':'subcategory';
         return(
-            <div className="panel-body">
-                <div className='categoryName col-sm-9'>{this.props.data[temp]}</div>
-                <div className='modify col-sm-3'>
-                    <button type="button" className="btn btn-danger" data-categoryid={this.props.data.Id} onClick={this.props.handleCategoryDelete}>Delete</button>
-                    <button type="button" className="btn btn-default" data-categoryid={this.props.data.Id} onClick={this.props.handleCategoryEdit}>Edit</button>
-                </div>
-            </div>
+            <table className="table table-hover">
+            <tbody>
+            <tr>
+                <td className='col-sm-8 categoryOrTag'>{this.props.data[temp]}</td>
+                <td className='col-sm-2'><button type="button" className="btn btn-danger" data-categoryid={this.props.data.Id} onClick={this.props.handleCategoryDelete}>Delete</button></td>
+                <td className='col-sm-2'><button type="button" className="btn btn-secondary" data-categoryid={this.props.data.Id} onClick={this.props.handleCategoryEdit}>Edit</button></td>
+            </tr></tbody></table>
         )
     }
 }

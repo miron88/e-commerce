@@ -54,24 +54,26 @@ class LoginForm extends Component {
                 {isAlreadyAuthenticated? <Redirect to={{
                     pathname: "/content"
                 }}/>:""}
-                <div className="col-sm-12">
-                    <div className="col-sm-4"><h4>Already a member?</h4></div>
-                    <form onSubmit={this.submitForm}>
+                <fieldset>
+                    <legend><h4>Already a member?</h4></legend>
+                    <form onSubmit={this.submitForm} className='form-inline'>
                         <div className="form-group col-sm-3">
+                            <label>User name: </label>
                             <input type="text" className="form-control" value={this.state.email} onChange={this.handleEmailChanged} placeholder="Enter email"/>
                         </div>
                         <div className="form-group col-sm-3">
+                            <label>Password:</label>
                             <input type="password" className="form-control" value={this.state.password} onChange={this.handlePasswordChanged} placeholder="Enter password"/>
                         </div>
                         <div className='col-sm-2'>
-                            <button className="btn btn-primary">Login</button>
+                            <label>&nbsp;</label>
+                            <button className="btn btn-secondary">Login</button>
                         </div>
                     </form>
-                </div>
+                </fieldset>
             </div>
         )
     }
-    
 }
 
 export default LoginForm;
