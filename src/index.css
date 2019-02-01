@@ -48,3 +48,9 @@ legend{
   max-height: 150px;
   width: auto;
 }
+
+#banner, #footer{
+  padding: 20px 0;
+  text-align: center;
+
+}

@@ -4,7 +4,6 @@ import ShowAllCategory from './ShowAllCategory';
 import axios from 'axios';
 import { GET_CATEGORIES } from '../../common/api_endpoints';
 import { GET_TAGS } from '../../common/api_endpoints';
-import ContentHeader from '../Content/Partial/ContentHeader';
 
 class Category extends Component{  
     constructor(props){
@@ -44,8 +43,6 @@ class Category extends Component{
     render(){
         return(
             <div>
-                <ContentHeader/>
-                
                 <div className="panel panel-default panel-heading">
                     <label className="radio-inline">
                         <input type="radio" name="optradio" defaultChecked value='Category' onClick={this.handleCatSubCatSelector} />Category

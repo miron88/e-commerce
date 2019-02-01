@@ -6,7 +6,6 @@ import IsLoggedIn from '../../common/IsLoggedIn';
 
 // Partial
 import AddProduct from './Partial/AddProduct';
-import ContentHeader from './Partial/ContentHeader';
 
 // CSS
 import './Content.css';
@@ -14,9 +13,8 @@ import './Content.css';
 class Content extends Component {
     render(){
         return(
-            <div className="container">
+            <div>
                 <IsLoggedIn/>
-                <ContentHeader/>
                 <AddProduct/>                
             </div>
         )

@@ -10,13 +10,16 @@ import Category from './views/Category/Category';
 
 import Header from './views/Header/Header';
 import Footer from './views/Footer/Footer';
+import ContentHeader from './views/Content/Partial/ContentHeader';
 
 class App extends Component {
   render() {
-    
+    const USER = localStorage.getItem('user');
     return (
       <div className="col-sm-12">
         <Header/>
+        {USER?<ContentHeader/>:("")}
+        
         <Router basename='/'>
           <Switch>
             <Route exact path='/' component={Login}/>
