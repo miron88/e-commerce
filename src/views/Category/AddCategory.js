@@ -62,14 +62,8 @@ class AddCategory extends Component{
         }
     }
     render(){
-        const USER = localStorage.getItem('user');
         return(
             <div>
-                {
-                    !USER?<Redirect to={{
-                        pathname: "/"
-                    }}/>:("")
-                }
                 { /* Form validation or ERROR message. */}
                 <fieldset>
                     <legend>Add New {this.props.categoryOrSubcategory}</legend>

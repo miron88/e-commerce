@@ -57,12 +57,12 @@ class LoginForm extends Component {
                 <fieldset>
                     <legend><h4>Already a member?</h4></legend>
                     <form onSubmit={this.submitForm} className='form-inline'>
-                        <div className="form-group col-sm-3">
-                            <label>User name: </label>
+                        <div className="col-sm-3">
+                            <label>User name:&nbsp; </label>
                             <input type="text" className="form-control" value={this.state.email} onChange={this.handleEmailChanged} placeholder="Enter email"/>
                         </div>
-                        <div className="form-group col-sm-3">
-                            <label>Password:</label>
+                        <div className="col-sm-3">
+                            <label>Password:&nbsp;</label>
                             <input type="password" className="form-control" value={this.state.password} onChange={this.handlePasswordChanged} placeholder="Enter password"/>
                         </div>
                         <div className='col-sm-2'>

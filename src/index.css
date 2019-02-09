@@ -13,6 +13,17 @@ code {
     monospace;
 }
 
+/***************************** nav *****************************/
+.navbar{
+  padding: 0;
+}
+.nav-item a{
+  padding: 15px;
+  display: block;
+  color: #cbd0d6;
+}
+/***************************************************************/
+
 .list-group-item{
   display: table !important;
   width: 100% !important;
@@ -41,7 +52,7 @@ fieldset{
 legend{
   width: auto !important;
   border: none !important;
-  padding: 5px !important;
+  padding: 15px !important;
 }
 
 #product-image img{
@@ -56,7 +67,11 @@ legend{
 
 }
 .form-group{
-  padding: 5px 0;
+  padding-top: 5px;
+}
+
+.form-inline label{
+  justify-content: left;
 }
 .control-label{
   padding-left: 0;
